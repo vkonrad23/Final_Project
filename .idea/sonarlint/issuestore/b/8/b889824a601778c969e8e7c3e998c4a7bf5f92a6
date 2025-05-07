@@ -1,0 +1,41 @@
+
+c
+java:S1192ƒ"GDefine a constant instead of duplicating this literal "Delete" 3 times.(‚µ……ûÿÿÿÿ
+^
+java:S1192”"GDefine a constant instead of duplicating this literal "Cancel" 3 times.(ö¼Õ”
+d
+java:S1192×"MDefine a constant instead of duplicating this literal "No Selection" 6 times.(¶´¿½
+h
+java:S1192ß"QDefine a constant instead of duplicating this literal "Confirm Deletion" 3 times.(³ƒ–µ
+j
+java:S1192 "NDefine a constant instead of duplicating this literal "Invalid Input" 3 times.(§³ºÜùÿÿÿÿ
+m
+java:S1192u"WDefine a constant instead of duplicating this literal "-fx-font-weight: bold;" 3 times.(†¶™“
+o	java:S135Æ	"YReduce the total number of break and continue statements in this loop to use at most one.(ŞÙ»
+@	java:S106V"+Replace this use of System.out by a logger.(¹áŒÕ
+i
+java:S6204İ"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+A	java:S106ø"+Replace this use of System.out by a logger.( ËÄÜ
+i
+java:S6204ˆ"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+A	java:S106¬"+Replace this use of System.out by a logger.(¿¨ÂÌ
+g
+java:S3457Ì"Q%n should be used in place of \n to produce the platform-specific line separator.(ãĞú
+i
+java:S3776˜"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¥ïÚ 
+A	java:S106÷"+Replace this use of System.out by a logger.(À¡áº
+F	java:S106ù"+Replace this use of System.err by a logger.(¡â¯Üùÿÿÿÿ
+F	java:S106"+Replace this use of System.out by a logger.(ëˆÂçúÿÿÿÿ
+F	java:S106ƒ"+Replace this use of System.err by a logger.(¼½‹§ÿÿÿÿÿ
+V
+java:S1161ò":Add the "@Override" annotation above this method signature(á™ÁÇşÿÿÿÿ
+i
+java:S3776	"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ù¹Ç
+h
+java:S3776¼	"RRefactor this method to reduce its Cognitive Complexity from 49 to the 15 allowed.(ıË…M
+@	java:S106×	"+Replace this use of System.err by a logger.(¤Ğ…S
+F	java:S106æ	"+Replace this use of System.err by a logger.(Ê¢ë‰øÿÿÿÿ
+F	java:S106õ	"+Replace this use of System.err by a logger.(à›„‰üÿÿÿÿ
+Z
+java:S1659“
+">Declare "j" and all following declarations on a separate line.(ãäÚ‘üÿÿÿÿ
