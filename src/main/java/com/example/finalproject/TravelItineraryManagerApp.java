@@ -1,5 +1,10 @@
 package com.example.finalproject;
 
+
+import java.awt.*;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,18 +13,28 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.print.attribute.standard.Destination;
 import java.io.*;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class TravelItineraryManagerApp extends Application {
@@ -56,6 +71,15 @@ public class TravelItineraryManagerApp extends Application {
     // --- Main Application Entry Point ---
     public static void main(String[] args) {
         launch(args);
+    }
+    private void searchInBrowser(String query) {
+        try {
+            String encoded = URLEncoder.encode(query, StandardCharsets.UTF_8);
+            URI uri = new URI("https://www.google.com/search?q=" + encoded);
+            java.awt.Desktop.getDesktop().browse(uri);
+        } catch (Exception e) {
+            showAlert(AlertType.ERROR, "Web Search Error", "Unable to open browser.");
+        }
     }
 
     // --- JavaFX Application Start ---
@@ -735,6 +759,20 @@ public class TravelItineraryManagerApp extends Application {
         grid.setPadding(new Insets(20));
 
         TextField nameField = new TextField(dest.getName());
+        Button webSearchBtn = new Button("Search Web");
+        webSearchBtn.setOnAction(ev -> {
+            String place = nameField.getText().trim();
+            if (!place.isEmpty()) {
+                searchInBrowser(place);
+            } else {
+                showAlert(AlertType.WARNING, "Input Required", "Please enter a destination name first.");
+            }
+        });
+
+        HBox nameRow = new HBox(10, nameField, webSearchBtn);
+        grid.add(new Label("Name:"), 0, 0);
+        grid.add(nameRow, 1, 0);
+
         TextArea locationField = new TextArea(dest.getLocationDetails());
         locationField.setPrefRowCount(2);
         TextArea poiField = new TextArea(dest.getPointsOfInterest());
@@ -746,8 +784,6 @@ public class TravelItineraryManagerApp extends Application {
         TextArea tipsField = new TextArea(dest.getTravelTips());
         tipsField.setPrefRowCount(3);
 
-        grid.add(new Label("Name:"), 0, 0);
-        grid.add(nameField, 1, 0);
         grid.add(new Label("Location Details:"), 0, 1);
         grid.add(locationField, 1, 1);
         grid.add(new Label("Accommodation:"), 0, 2);
@@ -777,6 +813,7 @@ public class TravelItineraryManagerApp extends Application {
             okClicked[0] = true;
             dialogStage.close();
         });
+
         cancelButton.setOnAction(e -> dialogStage.close());
 
         HBox buttonBar = new HBox(10, okButton, cancelButton);
@@ -789,6 +826,8 @@ public class TravelItineraryManagerApp extends Application {
 
         return okClicked[0] ? Optional.of(dest) : Optional.empty();
     }
+
+
 
     private Optional<ItineraryEvent> showItineraryEditDialog(ItineraryEvent event, String title) {
         Stage dialogStage = new Stage();
